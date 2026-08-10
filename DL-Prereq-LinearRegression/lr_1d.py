@@ -21,7 +21,7 @@ Y = np.array(Y)
 plt.scatter(X, Y)
 plt.show()
 
-# applying equations to calculate a and b
+# applying some equations to calculate a and b
 
 denominator = X.dot(X) - X.mean() * X.sum()
 a = ( X.dot(Y) - Y.mean() * X.sum()) / denominator
