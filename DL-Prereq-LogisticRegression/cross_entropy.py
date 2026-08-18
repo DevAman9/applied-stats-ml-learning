@@ -27,7 +27,7 @@ def sigmoid(z):
 Y = sigmoid(z)
 
 
-def cross_entropy(Y, T):
+def cross_entropy(T, Y):
     E = 0
     for i in range(N):
         if T[i] == 1:
@@ -37,20 +37,33 @@ def cross_entropy(Y, T):
 
     return E
 
-print(cross_entropy(Y, T))
+# print(cross_entropy(T, Y))
 
-w1 = np.array([0, 4, 4])
+learning_rate = 0.1
+for i in range(100):
+    if i % 10 ==0:
+        print(cross_entropy(T, Y))
 
-plt.scatter(X[:, 0], X[:, 1], c = T, s = 100, alpha = 0.5)
-
-x_axis = np.linspace(-6, 6, 100)
-y_axis = -x_axis
-
-plt.plot(x_axis, y_axis)
-plt.show()
+    w += learning_rate * Xb.T.dot(T - Y)
+    Y = sigmoid(Xb.dot(w))
 
 
-z1 = Xb.dot(w1)
-Y1 = sigmoid(z1)
+print(f'final weight{w}')
 
-print(cross_entropy(Y1, T))
+
+#
+# w1 = np.array([0, 4, 4])
+#
+# plt.scatter(X[:, 0], X[:, 1], c = T, s = 100, alpha = 0.5)
+#
+# x_axis = np.linspace(-6, 6, 100)
+# y_axis = -x_axis
+#
+# plt.plot(x_axis, y_axis)
+# plt.show()
+#
+#
+# z1 = Xb.dot(w1)
+# Y1 = sigmoid(z1)
+#
+# print(cross_entropy(Y1, T))
