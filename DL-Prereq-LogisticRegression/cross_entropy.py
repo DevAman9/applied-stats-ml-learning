@@ -28,15 +28,16 @@ Y = sigmoid(z)
 
 
 def cross_entropy(T, Y):
-    E = 0
-    for i in range(N):
-        if T[i] == 1:
-            E -= np.log(Y[i])
-        else:
-            E -= np.log(1 - Y[i])
+    # E = 0
+    # for i in range(N):
+    #     if T[i] == 1:
+    #         E -= np.log(Y[i])
+    #     else:
+    #         E -= np.log(1 - Y[i])
+    #
+    # return E
 
-    return E
-
+    return -np.mean(T*np.log(Y) + (1-T)*np.log(1-Y))
 # print(cross_entropy(T, Y))
 
 learning_rate = 0.1
